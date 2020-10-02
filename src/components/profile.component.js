@@ -26,18 +26,19 @@ export default class Profile extends Component {
           {currentUser.token.substr(currentUser.token.length - 20)}
         </p>
         <p>
-          <strong>Id:</strong>{" "}
-          {currentUser.id}
+          <strong>Username:</strong>{" "}
+          {currentUser.userDetails.UserName}
         </p>
         <p>
-          <strong>Email:</strong>{" "}
-          {currentUser.email}
+          <strong>Fullname:</strong>{" "}
+          {currentUser.userDetails.FullName}
         </p>
-        <strong>Authorities:</strong>
+
+        {/* <strong>Authorities:</strong>
         <ul>
           {currentUser.roles &&
             currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
-        </ul>
+        </ul> */}
       </div>
     );
   }
