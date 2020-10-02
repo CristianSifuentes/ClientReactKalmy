@@ -71,6 +71,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 ### `npm install bootstrap`
 ### `npm install axios`
 ### `npm install react-validation validator` 
+### `npm install recharts` 
 
 
 

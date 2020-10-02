@@ -3,9 +3,11 @@ import authHeader from './auth-header';
 
 const API_URL = 'https://localhost:44336/api/';
 
-class UserService {
+class CarService {
     
     getCars(){
-        return axios.get(API_URL + "car", { headers: authHeader() })
+        return axios.get(API_URL + "car/search?parameter1=Type&parameter2=Model", { headers: authHeader() })
     }
 }
+
+export default new CarService();
