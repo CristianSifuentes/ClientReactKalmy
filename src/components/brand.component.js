@@ -1,14 +1,7 @@
 import React, {  PureComponent } from 'react';
+import CarService from "../services/car.service";
 
  import { PieChart, Pie, Sector } from 'recharts';
-
- const data = [
-   { name: 'nissan', value: 8 },
-   { name: 'chevrolet', value: 13 },
-   { name: 'mercedes:', value: 8 },
-   { name: 'toyota', value: 10 },
-   { name: 'tesla', value: 12 }
- ];
 
  const renderActiveShape = (props) => {
    const RADIAN = Math.PI / 180;
@@ -72,13 +65,33 @@ import React, {  PureComponent } from 'react';
      });
    };
 
+
+   componentDidMount() {
+    CarService.getCars("Brand", "").then(
+      response => {
+        this.setState({
+          content: response
+        });
+        console.log(response)
+      },
+      error => {
+        this.setState({
+          content:
+            (error.response && error.response.data) ||
+            error.message ||
+            error.toString()
+        });
+      }
+    );
+   }
+
    render() {
      return (
        <PieChart width={1000} height={1000}>
          <Pie
            activeIndex={this.state.activeIndex}
            activeShape={renderActiveShape}
-           data={data}
+           data={this.state.content}
            cx={200}
            cy={200}
            innerRadius={60}

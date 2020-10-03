@@ -1,6 +1,7 @@
 import React, {  PureComponent } from 'react';
+import CarService from "../services/car.service";
 
- import { PieChart, Pie, Sector } from 'recharts';
+import { PieChart, Pie, Sector } from 'recharts';
 
  const data = [
    { name: '2017', value: 3 },
@@ -72,13 +73,33 @@ import React, {  PureComponent } from 'react';
      });
    };
 
+   componentDidMount() {
+    CarService.getCars("Model", "").then(
+      response => {
+        this.setState({
+          content: response
+        });
+        console.log(response)
+      },
+      error => {
+        this.setState({
+          content:
+            (error.response && error.response.data) ||
+            error.message ||
+            error.toString()
+        });
+      }
+    );
+   }
+
+
    render() {
      return (
        <PieChart width={1000} height={1000}>
          <Pie
            activeIndex={this.state.activeIndex}
            activeShape={renderActiveShape}
-           data={data}
+           data={this.state.content}
            cx={200}
            cy={200}
            innerRadius={60}
@@ -91,53 +112,3 @@ import React, {  PureComponent } from 'react';
      );
    }
  }
-
-
-//  color: rgb(0, 125, 252);
-//  background: rgb(92, 230, 176);
-
-
-
-// import React, { Component } from "react";
-
-// import UserService from "../services/user.service";
-
-// export default class BoardModerator extends Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//       content: ""
-//     };
-//   }
-
-//   componentDidMount() {
-//     UserService.getModeratorBoard().then(
-//       response => {
-//         this.setState({
-//           content: response.data
-//         });
-//       },
-//       error => {
-//         this.setState({
-//           content:
-//             (error.response &&
-//               error.response.data &&
-//               error.response.data.message) ||
-//             error.message ||
-//             error.toString()
-//         });
-//       }
-//     );
-//   }
-
-//   render() {
-//     return (
-//       <div className="container">
-//         <header className="jumbotron">
-//           <h3>{this.state.content}</h3>
-//         </header>
-//       </div>
-//     );
-//   }
-// }

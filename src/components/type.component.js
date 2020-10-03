@@ -1,16 +1,6 @@
 import React, {  PureComponent } from 'react';
-
-import { PieChart, Pie, Sector } from 'recharts';
 import CarService from "../services/car.service";
-
-//  const data = [
-//    { name: 'big', value: 3 },
-//    { name: 'medium', value: 3 },
-//    { name: 'small', value: 8 }
-//  ];
-
-var data = [
- ];
+import { PieChart, Pie, Sector } from 'recharts';
 
  const renderActiveShape = (props) => {
    const RADIAN = Math.PI / 180;
@@ -67,36 +57,34 @@ var data = [
    state = {
      activeIndex: 0,
    };
-   
 
-  //  onPieEnter = (data, index) => {
-  //    this.setState({
-  //      activeIndex: index,
-  //    });
-  //  };
+   onPieEnter = (data, index) => {
+     this.setState({
+       activeIndex: index,
+     });
+   };
 
-   componentDidMount() {
-    CarService.getCars().then(
-      response => {
-        this.setState({
-          content: response.data.channel.item
-        });
-        data = response.data.channel.item;
-        console.log(response.data.channel.item)
+    componentDidMount() {
+     CarService.getCars("Type", "").then(
+       response => {
+         this.setState({
+           content: response
+         });
+          // data = response.channel.item;
+         console.log(response)
 
         
-      },
-      error => {
-        this.setState({
-          content:
-            (error.response && error.response.data) ||
-            error.message ||
-            error.toString()
-        });
-      }
-    );
-   }
-
+       },
+       error => {
+         this.setState({
+           content:
+             (error.response && error.response.data) ||
+             error.message ||
+             error.toString()
+         });
+       }
+     );
+    }
 
 
 
@@ -106,7 +94,7 @@ var data = [
          <Pie
            activeIndex={this.state.activeIndex}
            activeShape={renderActiveShape}
-           data={data}
+           data={this.state.content}
            cx={200}
            cy={200}
            innerRadius={60}
@@ -120,48 +108,3 @@ var data = [
    }
  }
 
-
-
-// import React, { Component } from "react";
-
-// import UserService from "../services/user.service";
-
-// export default class BoardModerator extends Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//       content: ""
-//     };
-//   }
-
-//   componentDidMount() {
-//     UserService.getModeratorBoard().then(
-//       response => {
-//         this.setState({
-//           content: response.data
-//         });
-//       },
-//       error => {
-//         this.setState({
-//           content:
-//             (error.response &&
-//               error.response.data &&
-//               error.response.data.message) ||
-//             error.message ||
-//             error.toString()
-//         });
-//       }
-//     );
-//   }
-
-//   render() {
-//     return (
-//       <div className="container">
-//         <header className="jumbotron">
-//           <h3>{this.state.content}</h3>
-//         </header>
-//       </div>
-//     );
-//   }
-// }
