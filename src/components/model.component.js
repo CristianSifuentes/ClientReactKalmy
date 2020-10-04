@@ -3,13 +3,6 @@ import CarService from "../services/car.service";
 
 import { PieChart, Pie, Sector } from 'recharts';
 
- const data = [
-   { name: '2017', value: 3 },
-   { name: '2018', value: 3 },
-   { name: '2019', value: 8 },
-   { name: '2020', value: 8 }
-
- ];
 
  const renderActiveShape = (props) => {
    const RADIAN = Math.PI / 180;
