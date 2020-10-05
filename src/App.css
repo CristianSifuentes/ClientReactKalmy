@@ -43,3 +43,34 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+.btn-custom {
+  color: #5ce6b0!important;
+  border-width: 0px!important;
+  border-radius: 100px;
+  letter-spacing: 1px;
+  font-size: 21px;
+  font-family: 'Poppins',Helvetica,Arial,Lucida,sans-serif!important;
+  font-weight: 600!important;
+  text-transform: uppercase!important;
+  background-color: #2e294e;
+}
+
+.et_pb_row_8 {
+  border-radius: 10px 10px 10px 10px;
+  overflow: hidden;
+  border-width: 4px;
+  border-color: #5ce6b0;
+}
+
+.bg-dark {
+  background-color: #2e294e !important;
+}
+
+.navbar-dark .navbar-nav .nav-link  {
+  color: #5ce6b0 !important;
+}
+
+.navbar-dark .navbar-brand {
+  color: #5ce6b0 !important;
+
+}

@@ -45,21 +45,29 @@ const vmodel = value => {
   }
 };
 
-export default class InsertCar extends Component {
+export default class DeleteCar extends Component {
   constructor(props) {
     super(props);
     this.handleRegister = this.handleRegister.bind(this);
     this.onChangetype = this.onChangetype.bind(this);
     this.onChangebrand = this.onChangebrand.bind(this);
     this.onChangemodel = this.onChangemodel.bind(this);
+    this.onChangeId = this.onChangeId.bind(this);
 
     this.state = {
+      id: 0,
       type: "",
       brand: "",
       model: 0,
       successful: false,
       message: ""
     };
+  }
+
+  onChangeId(e) {
+    this.setState({
+      id: e.target.value
+    });
   }
 
   onChangetype(e) {
@@ -170,7 +178,7 @@ export default class InsertCar extends Component {
                 </div>
 
                 <div className="form-group">
-                  <button className="btn btn-primary btn-block">Insert</button>
+                  <button className="btn btn-primary btn-block">Delete</button>
                 </div>
               </div>
             )}

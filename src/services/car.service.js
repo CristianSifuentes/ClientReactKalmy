@@ -20,6 +20,7 @@ class CarService {
           console.log(error)
        })
       }
+
       getCars() {
         return axios.get(API_URL + 'car', { headers: authHeader() });
       }
@@ -38,15 +39,29 @@ class CarService {
       }
     
 
-      // getCars() {
-      //   return axios.get(API_URL + 'car', {}, { headers: authHeader() })
-      //   .then(response => {
-      //     return response.data;
-      //   })
-      // .catch((error) => {
-      //     console.log(error)
-      // });
-      //}
+      updateCar(id, type, brand, model) {
+        return axios.put(API_URL + "car/" + id, {
+          id,
+          type,
+          brand,
+          model
+        }, { headers: authHeader() }).then(response => {
+          return response.data;
+        })
+        .catch((error) => {
+            console.log(error)
+        });
+      }
+
+      deleteCar(id) {
+        return axios.delete(API_URL + "car/" + id, {
+        }, { headers: authHeader() }).then(response => {
+          return response.data;
+        })
+        .catch((error) => {
+            console.log(error)
+        });
+      }
 
 }
 

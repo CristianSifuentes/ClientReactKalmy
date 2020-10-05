@@ -82,9 +82,9 @@ export default class Login extends Component {
   render() {
     return (
       <div className="col-md-12">
-        <div className="card card-container">
+        <div className="card card-container et_pb_row_8">
           <img
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+            src="https://www.kalmy.mx/wp-content/uploads/2019/08/k_almY.png"
             alt="profile-img"
             className="profile-img-card"
           />
@@ -121,7 +121,7 @@ export default class Login extends Component {
 
             <div className="form-group">
               <button
-                className="btn btn-primary btn-block"
+                className="btn btn-custom  btn-block"
                 disabled={this.state.loading}
               >
                 {this.state.loading && (

@@ -26,6 +26,7 @@ import ModelType from "./components/modeltype.component";
 import BasicTable from "./components/car/cars.component";
 import UpdateCar from "./components/car/updatecar.component";
 import InsertCar from "./components/car/insertcar.component";
+import DeleteCar from "./components/car/deletecar.component";
 
 
 
@@ -210,7 +211,9 @@ class App extends Component {
             <Route path="/cars" component={BasicTable} />
             <Route path="/updatecar" component={UpdateCar} />
             <Route path="/insertcar" component={InsertCar} />
+            <Route path="/deletecar" component={DeleteCar} />
 
+            
 
           </Switch>
         </div>

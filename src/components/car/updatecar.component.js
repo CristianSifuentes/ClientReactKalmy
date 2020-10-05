@@ -1,49 +1,225 @@
-
-
 import React, { Component } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
-export default class UpdateCar extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {value: ''};
-  
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
-  
-    handleChange(event) {
-      this.setState({value: event.target.value});
-    }
-  
-    handleSubmit(event) {
-      alert('A name was submitted: ' + this.state.value);
-      event.preventDefault();
-    }
-  
-    render() {
-      return (
-         <form onSubmit={this.handleSubmit}>
-            <div class="form-group">
-              <label for="Type">Type</label>
-              <input type="type" class="form-control" id="type" aria-describedby="type" placeholder="Enter type"/>
-              <small id="typeHelp" class="form-text text-muted">small, medium or big</small>
-            </div>
-            <div class="form-group">
-              <label for="brand">Brand</label>
-              <input type="brand" class="form-control" id="exampleInputbrand1" aria-describedby="brandHelp" placeholder="Enter brand" />
-              <small id="brandHelp" class="form-text text-muted">We'll never share your brand with anyone else.</small>
-            </div>
-            <div class="form-group">
-              <label for="Model">Model</label>
-              <input type="model" class="form-control" id="model" aria-describedby="modelHelp" placeholder="Enter model" />
-              <small id="modelHelp" class="form-text text-muted">We'll never share your brand with anyone else.</small>
-            </div>
-            <button type="submit" class="btn btn-primary">Save</button>
+import CarService from "../../services/car.service";
 
-         </form>
-      );
-    }
+const required = value => {
+  if (!value) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        This field is required!
+      </div>
+    );
   }
+};
+
+// const brand = value => {
+//   if (!isbrand(value)) {
+//     return (
+//       <div className="alert alert-danger" role="alert">
+//         This is not a valid brand.
+//       </div>
+//     );
+//   }
+// };
+
+const vtype = value => {
+  if (value.length < 3 || value.length > 20) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        The type must be between 3 and 20 characters.
+      </div>
+    );
+  }
+};
+
+const vmodel = value => {
+  if (value.length < 6 || value.length > 40) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        The model must be between 6 and 40 characters.
+      </div>
+    );
+  }
+};
+
+export default class UpdateCar extends Component {
+  constructor(props) {
+    super(props);
+    this.handleRegister = this.handleRegister.bind(this);
+    this.onChangetype = this.onChangetype.bind(this);
+    this.onChangebrand = this.onChangebrand.bind(this);
+    this.onChangemodel = this.onChangemodel.bind(this);
+    this.onChangeId = this.onChangeId.bind(this);
+
+    
+    this.state = {
+      id: 0,
+      type: "",
+      brand: "",
+      model: 0,
+      successful: false,
+      message: ""
+    };
+  }
+
+  onChangeId(e) {
+    this.setState({
+      id: e.target.value
+    });
+  }
+
+  onChangetype(e) {
+    this.setState({
+      type: e.target.value
+    });
+  }
+
+  onChangebrand(e) {
+    this.setState({
+      brand: e.target.value
+    });
+  }
+
+  onChangemodel(e) {
+    this.setState({
+      model: e.target.value
+    });
+  }
+
+  handleRegister(e) {
+    e.preventDefault();
+
+    this.setState({
+      message: "",
+      successful: false
+    });
+
+    this.form.validateAll();
+      CarService.updateCar(
+        Number(this.state.id),
+        this.state.type,
+        this.state.brand,
+        Number(this.state.model)
+      ).then(
+        response => {
+          console.log(response);
+
+          // this.setState({
+          //   message: response.data.message,
+          //   successful: true
+          // });
+        },
+        error => {
+          console.log(error);
+          // const resMessage =
+          //   (error.response &&
+          //     error.response.data &&
+          //     error.response.data.message) ||
+          //   error.message ||
+          //   error.toString();
+
+          // this.setState({
+          //   successful: false,
+          //   message: resMessage
+          // });
+        }
+      );
+    
+  }
+
+  render() {
+    return (
+      <div className="col-md-12">
+
+          <Form
+            onSubmit={this.handleRegister}
+            ref={c => {
+              this.form = c;
+            }}
+          >
+            {!this.state.successful && (
+              <div>
+
+              <div className="form-group">
+                  <label htmlFor="type">id</label>
+                  <Input
+                    type="text"
+                    className="form-control"
+                    name="id"
+                    value={this.state.id}
+                    onChange={this.onChangeId}
+                    validations={[required]}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="type">type</label>
+                  <Input
+                    type="text"
+                    className="form-control"
+                    name="type"
+                    value={this.state.type}
+                    onChange={this.onChangetype}
+                    validations={[required, vtype]}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="brand">brand</label>
+                  <Input
+                    type="text"
+                    className="form-control"
+                    name="brand"
+                    value={this.state.brand}
+                    onChange={this.onChangebrand}
+                    validations={[required, vtype]}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="model">model</label>
+                  <Input
+                    type="text"
+                    className="form-control"
+                    name="model"
+                    value={this.state.model}
+                    onChange={this.onChangemodel}
+                    validations={[required, vtype]}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <button className="btn btn-primary btn-block">Update</button>
+                </div>
+              </div>
+            )}
+
+            {this.state.message && (
+              <div className="form-group">
+                <div
+                  className={
+                    this.state.successful
+                      ? "alert alert-success"
+                      : "alert alert-danger"
+                  }
+                  role="alert"
+                >
+                  {this.state.message}
+                </div>
+              </div>
+            )}
+            <CheckButton
+              style={{ display: "none" }}
+              ref={c => {
+                this.checkBtn = c;
+              }}
+            />
+          </Form>
+      
+      </div>
+    );
+  }
+}
