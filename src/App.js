@@ -58,7 +58,7 @@ class App extends Component {
   }
 
   render() {
-    const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
+    const { currentUser, showAdminBoard } = this.state;
 
     return (
       <div>
@@ -73,7 +73,7 @@ class App extends Component {
               </Link>
             </li>  */}
 
-            {showAdminBoard == "User" && (
+            {showAdminBoard === "User" && (
               <li className="nav-item">
               <Link to={"/cars"} className="nav-link">
                 Cars
@@ -81,7 +81,7 @@ class App extends Component {
             </li>
               )} 
 
-{showAdminBoard == "User" && (
+             {showAdminBoard === "User" && (
               <li className="nav-item">
               <Link to={"/insertcar"} className="nav-link">
                 Add Car
@@ -92,7 +92,7 @@ class App extends Component {
 
 
 
-            {showAdminBoard == "Admin" && (
+            {showAdminBoard === "Admin" && (
               <li className="nav-item">
               <Link to={"/type"} className="nav-link">
                 Type
@@ -100,7 +100,7 @@ class App extends Component {
             </li>
               )} 
 
-             {showAdminBoard == "Admin" && (
+             {showAdminBoard === "Admin" && (
                 <li className="nav-item">
                 <Link to={"/typebrand"} className="nav-link">
                   Type-Brand
@@ -109,7 +109,7 @@ class App extends Component {
               )} 
 
 
-             {showAdminBoard == "Admin" && (
+             {showAdminBoard === "Admin" && (
               <li className="nav-item">
               <Link to={"/typemodel"} className="nav-link">
                 Type-Model
@@ -118,7 +118,7 @@ class App extends Component {
               )} 
 
 
-              {showAdminBoard == "Admin" && (
+              {showAdminBoard === "Admin" && (
                 <li className="nav-item">
                 <Link to={"/brand"} className="nav-link">
                   Brand
@@ -127,7 +127,7 @@ class App extends Component {
                 )} 
 
 
-                {showAdminBoard == "Admin" && (
+                {showAdminBoard === "Admin" && (
 
                 <li className="nav-item">
                 <Link to={"/brandtype"} className="nav-link">
@@ -136,7 +136,7 @@ class App extends Component {
                 </li>
                 )} 
 
-                {showAdminBoard == "Admin" && (
+                {showAdminBoard === "Admin" && (
                 <li className="nav-item">
                 <Link to={"/brandmodel"} className="nav-link">
                   Brand-Model
@@ -144,7 +144,7 @@ class App extends Component {
                 </li>
                 )} 
 
-             {showAdminBoard == "Admin" && (
+             {showAdminBoard === "Admin" && (
                           <li className="nav-item">
                           <Link to={"/model"} className="nav-link">
                             Model
@@ -153,7 +153,7 @@ class App extends Component {
               )} 
 
 
-             {showAdminBoard == "Admin" && (
+             {showAdminBoard === "Admin" && (
               <li className="nav-item">
               <Link to={"/modeltype"} className="nav-link">
                 Model-Type
@@ -161,7 +161,7 @@ class App extends Component {
             </li>
               )} 
 
-             {showAdminBoard == "Admin" && (
+             {showAdminBoard === "Admin" && (
               <li className="nav-item">
               <Link to={"/modelbrand"} className="nav-link">
                 Model-Brand

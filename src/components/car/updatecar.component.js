@@ -35,15 +35,15 @@ const vtype = value => {
   }
 };
 
-const vmodel = value => {
-  if (value.length < 6 || value.length > 40) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The model must be between 6 and 40 characters.
-      </div>
-    );
-  }
-};
+// const vmodel = value => {
+//   if (value.length < 6 || value.length > 40) {
+//     return (
+//       <div className="alert alert-danger" role="alert">
+//         The model must be between 6 and 40 characters.
+//       </div>
+//     );
+//   }
+// };
 
 export default class UpdateCar extends Component {
   constructor(props) {
