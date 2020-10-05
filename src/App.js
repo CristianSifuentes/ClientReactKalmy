@@ -72,11 +72,24 @@ class App extends Component {
                 Home
               </Link>
             </li>  */}
-            <li className="nav-item">
+
+            {showAdminBoard == "User" && (
+              <li className="nav-item">
               <Link to={"/cars"} className="nav-link">
                 Cars
               </Link>
             </li>
+              )} 
+
+{showAdminBoard == "User" && (
+              <li className="nav-item">
+              <Link to={"/insertcar"} className="nav-link">
+                Add Car
+              </Link>
+            </li>
+              )} 
+
+
 
 
             {showAdminBoard == "Admin" && (

@@ -89,6 +89,39 @@ export default class UpdateCar extends Component {
     });
   }
 
+  componentDidMount(props) {
+    console.log("id",this.props.location.state.id);
+    
+    CarService.getCar(
+      Number(this.props.location.state.id)
+    ).then(
+      response => {
+        console.log(response.data);
+
+         this.setState({
+           id: response.data.Id,
+           type: response.data.Type,
+          brand: response.data.Brand,
+          model: response.data.Model,
+         });
+      },
+      error => {
+        console.log(error);
+        // const resMessage =
+        //   (error.response &&
+        //     error.response.data &&
+        //     error.response.data.message) ||
+        //   error.message ||
+        //   error.toString();
+
+        // this.setState({
+        //   successful: false,
+        //   message: resMessage
+        // });
+      }
+    );
+   }
+
   handleRegister(e) {
     e.preventDefault();
 
@@ -192,7 +225,7 @@ export default class UpdateCar extends Component {
                 </div>
 
                 <div className="form-group">
-                  <button className="btn btn-primary btn-block">Update</button>
+                  <button className="btn btn-custom btn-block">Update</button>
                 </div>
               </div>
             )}

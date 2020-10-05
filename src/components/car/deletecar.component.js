@@ -129,6 +129,39 @@ export default class DeleteCar extends Component {
     
   }
 
+  componentDidMount(props) {
+    console.log("id",this.props.location.state.id);
+    
+    CarService.getCar(
+      Number(this.props.location.state.id)
+    ).then(
+      response => {
+        console.log(response.data);
+
+         this.setState({
+           id: response.data.Id,
+           type: response.data.Type,
+          brand: response.data.Brand,
+          model: response.data.Model,
+         });
+      },
+      error => {
+        console.log(error);
+        // const resMessage =
+        //   (error.response &&
+        //     error.response.data &&
+        //     error.response.data.message) ||
+        //   error.message ||
+        //   error.toString();
+
+        // this.setState({
+        //   successful: false,
+        //   message: resMessage
+        // });
+      }
+    );
+   }
+
   render() {
     return (
       <div className="col-md-12">
@@ -178,7 +211,7 @@ export default class DeleteCar extends Component {
                 </div>
 
                 <div className="form-group">
-                  <button className="btn btn-primary btn-block">Delete</button>
+                  <button className="btn btn-custom btn-block">Delete</button>
                 </div>
               </div>
             )}

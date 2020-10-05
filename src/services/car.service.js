@@ -25,6 +25,10 @@ class CarService {
         return axios.get(API_URL + 'car', { headers: authHeader() });
       }
 
+      getCar(id) {
+        return axios.get(API_URL + 'car/' + id, { headers: authHeader() });
+      }
+
       addCar(type, brand, model) {
         return axios.post(API_URL + "car", {
           type,

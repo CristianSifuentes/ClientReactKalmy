@@ -1,4 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment
+    // , useCallback 
+
+} from 'react';
+// import {useHistory} from 'react-router-dom';
+import { Redirect } from 'react-router';
 
 import ReactDatatable from '@ashvin27/react-datatable';
 import { orderBy } from 'lodash';
@@ -103,10 +108,14 @@ class OnSort extends Component {
   
     editRecord = (record, index) => {
         console.log("Edit record", index, record);
+        this.setState({update: true , id : record.Id});
+
     }
 
     deleteRecord = (record, index) => {
         console.log("Delete record", index, record);
+        this.setState({delete: true, id : record.Id});
+
     }
 
     onSort = (column, records, sortOrder) => {
@@ -114,6 +123,23 @@ class OnSort extends Component {
     }
 
     render() {
+
+        if (this.state.update) {
+           return <Redirect
+            to={{
+            pathname: "/updatecar",
+            state: { id: this.state.id }
+          }}
+        />;
+        }
+        if (this.state.delete) {
+            return <Redirect
+            to={{
+            pathname: "/deletecar",
+            state: { id: this.state.id }
+          }}
+        />;
+        }
         return (
             <ReactDatatable
                 config={this.config}
