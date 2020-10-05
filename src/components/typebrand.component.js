@@ -1,43 +1,48 @@
 import React, { PureComponent } from 'react';
 import { Treemap } from 'recharts';
-
-const data = [
-  {
-    name: 'small',
-    children: [
-      { name: 'Nissan', size: 1 },
-      { name: 'Toyota', size: 3 },
-    ],
-  },
-  {
-    name: 'medium',
-    children: [
-      { name: 'Nissan', size: 1 },
-      { name: 'Toyota', size: 4 },
-      { name: 'Tesla', size: 5 },
-    ],
-  },
-  {
-    name: 'large',
-    children: [
-      { name: 'Nissan', size: 1 },
-      { name: 'Toyota', size: 4 },
-      { name: 'Tesla', size: 5 },
-    ],
-  }
-];
-
+import CarService from "../services/car.service";
 export default class TypeBrand extends PureComponent {
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/u702a3Lx/';
+
+  state = {
+    activeIndex: 0,
+  };
+
+  componentDidMount() {
+    CarService.getCars("Type", "Brand").then(
+      response => {
+        this.setState({
+          content: response
+        });
+         // data = response.channel.item;
+        console.log(response)
+
+       
+      },
+      error => {
+       this.setState({
+         content: []
+       });
+       //  this.setState({
+       //    content:
+       //      (error.response && error.response.data) ||
+       //      error.message ||
+       //      error.toString()
+       //  });
+      }
+    );
+   }
+
+
 
   render() {
     return (
       <Treemap
-        width={800}
-        height={600}
-        data={data}
+      width={1200}
+      height={800}
+        data={this.state.content}
         dataKey="size"
-        ratio={4 / 3}
+        ratio={4 / 4}
         stroke="#fff"
         fill="#8884d8"
       />
