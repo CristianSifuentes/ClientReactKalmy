@@ -2,31 +2,31 @@ import React, { PureComponent } from 'react';
 import { Treemap } from 'recharts';
 import CarService from "../services/car.service";
 
-const data = [
-  {
-    name: 'small',
-    children: [
-      { name: '2019', size: 1 },
-      { name: '2020', size: 3 },
-    ],
-  },
-  {
-    name: 'medium',
-    children: [
-      { name: '2018', size: 1 },
-      { name: '2019', size: 4 },
-      { name: '2020', size: 5 },
-    ],
-  },
-  {
-    name: 'large',
-    children: [
-      { name: '2016', size: 1 },
-      { name: '2017', size: 4 },
-      { name: '2020', size: 5 },
-    ],
-  }
-];
+// const data = [
+//   {
+//     name: 'small',
+//     children: [
+//       { name: '2019', size: 1 },
+//       { name: '2020', size: 3 },
+//     ],
+//   },
+//   {
+//     name: 'medium',
+//     children: [
+//       { name: '2018', size: 1 },
+//       { name: '2019', size: 4 },
+//       { name: '2020', size: 5 },
+//     ],
+//   },
+//   {
+//     name: 'large',
+//     children: [
+//       { name: '2016', size: 1 },
+//       { name: '2017', size: 4 },
+//       { name: '2020', size: 5 },
+//     ],
+//   }
+// ];
 
 export default class TypeModel extends PureComponent {
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/u702a3Lx/';
@@ -36,7 +36,7 @@ export default class TypeModel extends PureComponent {
   };
 
   componentDidMount() {
-    CarService.getCars("Type", "Model").then(
+    CarService.search("Type", "Model").then(
       response => {
         this.setState({
           content: response
@@ -76,3 +76,7 @@ export default class TypeModel extends PureComponent {
     );
   }
 }
+
+
+//2e294e
+//#2e294e

@@ -9,7 +9,6 @@ import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
 import Profile from "./components/profile.component";
-// import BoardUser from "./components/board-user.component";
 
 import Type from "./components/type.component";
 import TypeModel from "./components/typemodel.component";
@@ -24,7 +23,11 @@ import Model from "./components/model.component";
 import ModelBrand from "./components/modelbrand.component";
 import ModelType from "./components/modeltype.component";
 
-import BoardAdmin from "./components/board-admin.component";
+import BasicTable from "./components/car/cars.component";
+import UpdateCar from "./components/car/updatecar.component";
+import InsertCar from "./components/car/insertcar.component";
+
+
 
 class App extends Component {
   constructor(props) {
@@ -44,11 +47,7 @@ class App extends Component {
     if (user) {
       this.setState({
         currentUser: user,
-        showModeratorBoard: "ROLE_MODERATOR",
-        showAdminBoard: "ROLE_ADMIN",
-
-        // showModeratorBoard: user.roles.includes("ROLE_MODERATOR"),
-        // showAdminBoard: user.roles.includes("ROLE_ADMIN"),
+        showAdminBoard: user.userDetails.UserRole
       });
     }
   }
@@ -67,95 +66,95 @@ class App extends Component {
           kalmy
           </Link>
           <div className="navbar-nav mr-auto">
-            {/* <li className="nav-item">
+           {/* <li className="nav-item">
               <Link to={"/home"} className="nav-link">
                 Home
               </Link>
-            </li> */}
-
-
-
+            </li>  */}
             <li className="nav-item">
-                <Link to={"/type"} className="nav-link">
-                  Type
-                </Link>
-              </li>
+              <Link to={"/cars"} className="nav-link">
+                Cars
+              </Link>
+            </li>
 
+
+            {showAdminBoard == "Admin" && (
               <li className="nav-item">
+              <Link to={"/type"} className="nav-link">
+                Type
+              </Link>
+            </li>
+              )} 
+
+             {showAdminBoard == "Admin" && (
+                <li className="nav-item">
                 <Link to={"/typebrand"} className="nav-link">
                   Type-Brand
                 </Link>
-              </li>
+                </li>
+              )} 
 
+
+             {showAdminBoard == "Admin" && (
               <li className="nav-item">
-                <Link to={"/typemodel"} className="nav-link">
-                  Type-Model
-                </Link>
-              </li>
+              <Link to={"/typemodel"} className="nav-link">
+                Type-Model
+              </Link>
+            </li>
+              )} 
 
 
-              <li className="nav-item">
+              {showAdminBoard == "Admin" && (
+                <li className="nav-item">
                 <Link to={"/brand"} className="nav-link">
                   Brand
                 </Link>
               </li>
+                )} 
 
-              <li className="nav-item">
+
+                {showAdminBoard == "Admin" && (
+
+                <li className="nav-item">
                 <Link to={"/brandtype"} className="nav-link">
                   Brand-Type
                 </Link>
-              </li>
+                </li>
+                )} 
 
-              <li className="nav-item">
+                {showAdminBoard == "Admin" && (
+                <li className="nav-item">
                 <Link to={"/brandmodel"} className="nav-link">
                   Brand-Model
                 </Link>
-              </li>
+                </li>
+                )} 
+
+             {showAdminBoard == "Admin" && (
+                          <li className="nav-item">
+                          <Link to={"/model"} className="nav-link">
+                            Model
+                          </Link>
+                        </li>
+              )} 
 
 
+             {showAdminBoard == "Admin" && (
               <li className="nav-item">
-                <Link to={"/model"} className="nav-link">
-                  Model
-                </Link>
-              </li>
+              <Link to={"/modeltype"} className="nav-link">
+                Model-Type
+              </Link>
+            </li>
+              )} 
 
+             {showAdminBoard == "Admin" && (
               <li className="nav-item">
-                <Link to={"/modeltype"} className="nav-link">
-                  Model-Type
-                </Link>
-              </li>
+              <Link to={"/modelbrand"} className="nav-link">
+                Model-Brand
+              </Link>
+            </li>
+              )} 
 
-              <li className="nav-item">
-                <Link to={"/modelbrand"} className="nav-link">
-                  Model-Brand
-                </Link>
-              </li>
-
-
-
-             {showModeratorBoard && (
-              <li className="nav-item">
-                <Link to={"/type"} className="nav-link">
-                  Type
-                </Link>
-              </li>
-            )}
-
-            {showAdminBoard && (
-              <li className="nav-item">
-                <Link to={"/admin"} className="nav-link">
-                  Admin Board
-                </Link>
-              </li>
-            )} 
-
-            {/* {currentUser && (
-              <li className="nav-item">
-                <Link to={"/user"} className="nav-link">
-                  User
-                </Link>
-              </li>
-            )} */}
           </div>
 
           {currentUser ? (
@@ -208,7 +207,11 @@ class App extends Component {
             <Route path="/modeltype" component={ModelType} />
             <Route path="/modelbrand" component={ModelBrand} />
 
-             <Route path="/admin" component={BoardAdmin} /> 
+            <Route path="/cars" component={BasicTable} />
+            <Route path="/updatecar" component={UpdateCar} />
+            <Route path="/insertcar" component={InsertCar} />
+
+
           </Switch>
         </div>
       </div>

@@ -73,7 +73,7 @@ import { PieChart, Pie, Sector } from 'recharts';
    };
 
     componentDidMount() {
-     CarService.getCars("Type", "").then(
+     CarService.search("Type", "").then(
        response => {
          this.setState({
            content: response

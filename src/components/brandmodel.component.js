@@ -3,31 +3,31 @@ import { Treemap } from 'recharts';
 import CarService from "../services/car.service";
 
 
-const data = [
-  {
-    name: 'small',
-    children: [
-      { name: '2019', size: 1 },
-      { name: '2020', size: 3 },
-    ],
-  },
-  {
-    name: 'medium',
-    children: [
-      { name: '2018', size: 1 },
-      { name: '2019', size: 4 },
-      { name: '2020', size: 5 },
-    ],
-  },
-  {
-    name: 'large',
-    children: [
-      { name: '2016', size: 1 },
-      { name: '2017', size: 4 },
-      { name: '2020', size: 5 },
-    ],
-  }
-];
+// const data = [
+//   {
+//     name: 'small',
+//     children: [
+//       { name: '2019', size: 1 },
+//       { name: '2020', size: 3 },
+//     ],
+//   },
+//   {
+//     name: 'medium',
+//     children: [
+//       { name: '2018', size: 1 },
+//       { name: '2019', size: 4 },
+//       { name: '2020', size: 5 },
+//     ],
+//   },
+//   {
+//     name: 'large',
+//     children: [
+//       { name: '2016', size: 1 },
+//       { name: '2017', size: 4 },
+//       { name: '2020', size: 5 },
+//     ],
+//   }
+// ];
 
 export default class BrandModel extends PureComponent {
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/u702a3Lx/';
@@ -37,7 +37,7 @@ export default class BrandModel extends PureComponent {
   };
 
   componentDidMount() {
-    CarService.getCars("Brand", "Model").then(
+    CarService.search("Brand", "Model").then(
       response => {
         this.setState({
           content: response

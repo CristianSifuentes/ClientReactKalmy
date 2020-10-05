@@ -9,7 +9,7 @@ export default class TypeBrand extends PureComponent {
   };
 
   componentDidMount() {
-    CarService.getCars("Type", "Brand").then(
+    CarService.search("Type", "Brand").then(
       response => {
         this.setState({
           content: response

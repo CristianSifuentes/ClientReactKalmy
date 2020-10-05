@@ -72,6 +72,8 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 ### `npm install axios`
 ### `npm install react-validation validator` 
 ### `npm install recharts` 
+### `npm i @ashvin27/react-datatable'
+
 
 
 

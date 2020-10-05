@@ -37,7 +37,7 @@ export default class ModelType extends PureComponent {
   };
 
   componentDidMount() {
-    CarService.getCars("Model", "Type").then(
+    CarService.search("Model", "Type").then(
       response => {
         this.setState({
           content: response
