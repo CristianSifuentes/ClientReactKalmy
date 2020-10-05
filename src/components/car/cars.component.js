@@ -1,8 +1,4 @@
-import React, { Component, Fragment
-    // , useCallback 
-
-} from 'react';
-// import {useHistory} from 'react-router-dom';
+import React, { Component, Fragment} from 'react';
 import { Redirect } from 'react-router';
 
 import ReactDatatable from '@ashvin27/react-datatable';
@@ -16,7 +12,7 @@ class OnSort extends Component {
             {
                 key: "Id",
                 text: "Id",
-                className: "name",
+                className: "Id",
                 sortable: true
             },
             {
@@ -27,19 +23,13 @@ class OnSort extends Component {
             {
                 key: "Brand",
                 text: "Brand",
-                className: "postcode",
+                className: "Brand",
                 sortable: true
             },
             {
                 key: "Model",
                 text: "Model",
-                className: "rating",
-                sortable: true
-            },
-            {
-                key: "CreatedAt",
-                text: "CreatedAt",
-                className: "type_of_food",
+                className: "Model",
                 sortable: true
             },
             {

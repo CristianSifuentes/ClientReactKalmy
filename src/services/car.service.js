@@ -58,8 +58,7 @@ class CarService {
       }
 
       deleteCar(id) {
-        return axios.delete(API_URL + "car/" + id, {
-        }, { headers: authHeader() }).then(response => {
+        return axios.delete(API_URL + "car/" + id, { headers: authHeader() }).then(response => {
           return response.data;
         })
         .catch((error) => {

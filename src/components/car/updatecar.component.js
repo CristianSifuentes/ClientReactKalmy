@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
+import { Redirect } from 'react-router';
 
 import CarService from "../../services/car.service";
 
@@ -140,13 +141,17 @@ export default class UpdateCar extends Component {
         response => {
           console.log(response);
 
-          // this.setState({
-          //   message: response.data.message,
-          //   successful: true
-          // });
+          this.setState({
+            successful: true
+          });
+
         },
         error => {
           console.log(error);
+
+          this.setState({
+            successful: false
+          });
           // const resMessage =
           //   (error.response &&
           //     error.response.data &&
@@ -164,6 +169,16 @@ export default class UpdateCar extends Component {
   }
 
   render() {
+    
+    if (this.state.successful) {
+        return <Redirect
+        to={{
+        pathname: "/cars"
+      }}
+    />;
+    }
+
+
     return (
       <div className="col-md-12">
 
@@ -185,6 +200,7 @@ export default class UpdateCar extends Component {
                     value={this.state.id}
                     onChange={this.onChangeId}
                     validations={[required]}
+                    disabled={true}
                   />
                 </div>
 
@@ -226,6 +242,7 @@ export default class UpdateCar extends Component {
 
                 <div className="form-group">
                   <button className="btn btn-custom btn-block">Update</button>
+
                 </div>
               </div>
             )}

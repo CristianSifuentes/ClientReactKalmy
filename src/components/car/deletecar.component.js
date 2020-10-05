@@ -4,6 +4,7 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
 import CarService from "../../services/car.service";
+import { Redirect } from 'react-router';
 
 const required = value => {
   if (!value) {
@@ -98,14 +99,14 @@ export default class DeleteCar extends Component {
 
     this.form.validateAll();
 
-      CarService.addCar(
-        this.state.type,
-        this.state.brand,
-        Number(this.state.model)
+      CarService.deleteCar(
+        Number(this.state.id)
       ).then(
         response => {
           console.log(response);
-
+          this.setState({
+            successful: true
+          });
           // this.setState({
           //   message: response.data.message,
           //   successful: true
@@ -113,6 +114,9 @@ export default class DeleteCar extends Component {
         },
         error => {
           console.log(error);
+          this.setState({
+            successful: false
+          });
           // const resMessage =
           //   (error.response &&
           //     error.response.data &&
@@ -163,6 +167,16 @@ export default class DeleteCar extends Component {
    }
 
   render() {
+
+        
+        if (this.state.successful) {
+          return <Redirect
+          to={{
+          pathname: "/cars"
+        }}
+      />;
+      }
+
     return (
       <div className="col-md-12">
 
@@ -174,6 +188,21 @@ export default class DeleteCar extends Component {
           >
             {!this.state.successful && (
               <div>
+
+              <div className="form-group">
+                  <label htmlFor="type">id</label>
+                  <Input
+                    type="text"
+                    className="form-control"
+                    name="id"
+                    value={this.state.id}
+                    onChange={this.onChangeId}
+                    validations={[required]}
+                    disabled={true}
+                  />
+                </div>
+
+
                 <div className="form-group">
                   <label htmlFor="type">type</label>
                   <Input
@@ -183,6 +212,8 @@ export default class DeleteCar extends Component {
                     value={this.state.type}
                     onChange={this.onChangetype}
                     validations={[required, vtype]}
+                    disabled={true}
+
                   />
                 </div>
 
@@ -195,6 +226,8 @@ export default class DeleteCar extends Component {
                     value={this.state.brand}
                     onChange={this.onChangebrand}
                     validations={[required, vtype]}
+                    disabled={true}
+
                   />
                 </div>
 
@@ -207,6 +240,8 @@ export default class DeleteCar extends Component {
                     value={this.state.model}
                     onChange={this.onChangemodel}
                     validations={[required, vtype]}
+                    disabled={true}
+
                   />
                 </div>
 

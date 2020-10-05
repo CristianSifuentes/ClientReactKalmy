@@ -4,6 +4,7 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
 import CarService from "../../services/car.service";
+import { Redirect } from 'react-router';
 
 const required = value => {
   if (!value) {
@@ -98,6 +99,10 @@ export default class InsertCar extends Component {
         response => {
           console.log(response);
 
+          this.setState({
+            successful: true
+          });
+
           // this.setState({
           //   message: response.data.message,
           //   successful: true
@@ -105,6 +110,9 @@ export default class InsertCar extends Component {
         },
         error => {
           console.log(error);
+          this.setState({
+            successful: false
+          });
           // const resMessage =
           //   (error.response &&
           //     error.response.data &&
@@ -122,6 +130,17 @@ export default class InsertCar extends Component {
   }
 
   render() {
+
+    
+      if (this.state.successful) {
+        return <Redirect
+        to={{
+        pathname: "/cars"
+      }}
+    />;
+    }
+
+
     return (
       <div className="col-md-12">
 
@@ -170,7 +189,8 @@ export default class InsertCar extends Component {
                 </div>
 
                 <div className="form-group">
-                  <button className="btn btn-primary btn-block">Insert</button>
+                  <button className="btn btn-custom btn-block">Insert</button>
+
                 </div>
               </div>
             )}
