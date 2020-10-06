@@ -36,15 +36,16 @@ const vtype = value => {
   }
 };
 
-// const vmodel = value => {
-//   if (value.length < 6 || value.length > 40) {
-//     return (
-//       <div className="alert alert-danger" role="alert">
-//         The model must be between 6 and 40 characters.
-//       </div>
-//     );
-//   }
-// };
+const vnumber = value => {
+  if (value.length != 4) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        This field must be only 5 digits long.
+      </div>
+    );
+  }
+};
+
 
 export default class InsertCar extends Component {
   constructor(props) {
@@ -98,15 +99,15 @@ export default class InsertCar extends Component {
       ).then(
         response => {
           console.log(response);
-
-          this.setState({
-            successful: true
-          });
-
-          // this.setState({
-          //   message: response.data.message,
-          //   successful: true
-          // });
+          if (response === undefined) {
+            this.setState({
+              successful: false
+            });
+          }else {
+           this.setState({
+             successful: true
+           });
+          }
         },
         error => {
           console.log(error);
@@ -179,12 +180,12 @@ export default class InsertCar extends Component {
                 <div className="form-group">
                   <label htmlFor="model">model</label>
                   <Input
-                    type="text"
+                    type="number"
                     className="form-control"
                     name="model"
                     value={this.state.model}
                     onChange={this.onChangemodel}
-                    validations={[required, vtype]}
+                    validations={[required, vnumber]}
                   />
                 </div>
 

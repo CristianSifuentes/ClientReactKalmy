@@ -44,7 +44,7 @@ export default class TypeBrand extends PureComponent {
         dataKey="size"
         ratio={4 / 4}
         stroke="#fff"
-        fill="#8884d8"
+        fill="#5ce6b0"
       />
     );
   }

@@ -46,6 +46,18 @@ const vtype = value => {
 //   }
 // };
 
+
+const vnumber = value => {
+  if (value.length != 4) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        This field must be only 5 digits long.
+      </div>
+    );
+  }
+};
+
+
 export default class UpdateCar extends Component {
   constructor(props) {
     super(props);
@@ -231,12 +243,12 @@ export default class UpdateCar extends Component {
                 <div className="form-group">
                   <label htmlFor="model">model</label>
                   <Input
-                    type="text"
+                    type="number"
                     className="form-control"
                     name="model"
                     value={this.state.model}
                     onChange={this.onChangemodel}
-                    validations={[required, vtype]}
+                    validations={[required, vnumber]}
                   />
                 </div>
 

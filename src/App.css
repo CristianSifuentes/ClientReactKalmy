@@ -64,6 +64,7 @@ label {
   border-color: #5ce6b0 !important;
 }
 
+
 .bg-dark {
   background-color: #2e294e !important;
 }
@@ -73,6 +74,13 @@ label {
 }
 
 .navbar-dark .navbar-brand {
+  color: #5ce6b0 !important;
+
+}
+
+
+.jumbotron {
+  background-color: #2e294e !important;
   color: #5ce6b0 !important;
 
 }

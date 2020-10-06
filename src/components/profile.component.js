@@ -19,8 +19,7 @@ export default class Profile extends Component {
           <h3>
             <strong>{currentUser.username}</strong> Profile
           </h3>
-        </header>
-        <p>
+          <p>
           <strong>Token:</strong>{" "}
           {currentUser.token.substring(0, 20)} ...{" "}
           {currentUser.token.substr(currentUser.token.length - 20)}
@@ -33,12 +32,12 @@ export default class Profile extends Component {
           <strong>Fullname:</strong>{" "}
           {currentUser.userDetails.FullName}
         </p>
+        <p>
+          <strong>Role:</strong>{" "}
+          {currentUser.userDetails.UserRole}
+        </p>
 
-        {/* <strong>Authorities:</strong>
-        <ul>
-          {currentUser.roles &&
-            currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
-        </ul> */}
+        </header>
       </div>
     );
   }
