@@ -80,3 +80,32 @@ _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios
 
 ---
 ⌨️ con ❤️ por [CristianSifuentes](https://github.com/CristianSifuentes) 😊
+
+
+
+## Diagram 1
+![alt text](https://github.com/CristianSifuentes/ClientReactKalmy/blob/main/images/client1.jpg?raw=true)
+
+## Diagram 2
+![alt text](https://github.com/CristianSifuentes/ClientReactKalmy/blob/main/images/client2.jpg?raw=true)
+
+## Diagram 3
+![alt text](https://github.com/CristianSifuentes/ClientReactKalmy/blob/main/images/client3.jpg?raw=true)
+
+## Diagram 4
+![alt text](https://github.com/CristianSifuentes/ClientReactKalmy/blob/main/images/client4.jpg?raw=true)
+
+## Diagram 5
+![alt text](https://github.com/CristianSifuentes/ClientReactKalmy/blob/main/images/client5.jpg?raw=true)
+
+## Diagram 6
+![alt text](https://github.com/CristianSifuentes/ClientReactKalmy/blob/main/images/client6.jpg?raw=true)
+
+## Diagram 7
+![alt text](https://github.com/CristianSifuentes/ClientReactKalmy/blob/main/images/client7.jpg?raw=true)
+
+## Diagram 8
+![alt text](https://github.com/CristianSifuentes/ClientReactKalmy/blob/main/images/client8.jpg?raw=true)
+
+## Diagram 9
+![alt text](https://github.com/CristianSifuentes/ClientReactKalmy/blob/main/images/client9.jpg?raw=true)
