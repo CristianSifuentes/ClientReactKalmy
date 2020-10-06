@@ -36,6 +36,20 @@ _Una vez instaladas todas las dependencias, ejecutar el comando_
 npm start
 ```
 
+### Usuarios ⚙️
+
+```
+usuario: admin
+password: 1234
+
+usuario: user
+password: 1234
+
+La diferencia principal es que con usuario admin se podrá consultar el endpoint de búsqueda de combinaciones "Type", "Brand" o "Model".
+Y con el usuario user sé podra tener acceso a un CRUD para insertar, actualizar, eliminar o consultar el catalogo de "Car".
+
+```
+
 ## Construido con 🛠️
 
 
